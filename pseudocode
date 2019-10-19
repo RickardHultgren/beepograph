@@ -1,0 +1,12 @@
+sounds = [1.wav, 2.wav, 3.wav] 
+Period = 10seconds 
+Results #This could be a list or a dictionary in python. 
+For  sound in length(sounds): 
+	Play sound 
+	Wait period 
+	If pressed during wait period: 
+		Results.append(1) 
+	Else: 
+		Results.append(0) 
+Write results into a SQLdatabase 
+Print results as PDF 
