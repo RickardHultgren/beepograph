@@ -1,0 +1,41 @@
+Beepograph
+<script>
+var sounds = ["1.wav", "2.wav", "3.wav"] ;
+var beepLength = 60 ; //Beep length in seconds
+var pauseLength = 60 ; //Beep length in seconds
+
+var interval = 25 ;
+setInterval(onTimerTick, interval);
+
+var pressed = []
+var count = 0 ; // count seconds
+function onTimerTick(sound) {
+    if (count <= (beepLength*(100/interval)){
+		var audio = new Audio(eval(sound));
+		audio.currentTime = 0;
+		audio.play();
+	}
+	else if(count == (beepLength*(100/interval)) + (pauseLength*(100/interval))){
+		break;
+	}
+	else{
+		if pressed
+			pressed.push(1);
+		else
+			pressed.push(0);
+	}
+    count += 1 ;
+}
+
+function examine(){
+	for (var sound in sounds) { 
+		onTimerTick(sound) ;
+		If pressed during wait period: 
+			Results.append(1) 
+		Else: 
+			Results.append(0) 
+	}
+}
+Write results into a SQLdatabase 
+Print results as PDF 
+</script>
