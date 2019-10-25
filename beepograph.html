@@ -25,7 +25,7 @@ var pauseLength = 60 ; //Beep length in seconds
 var interval = 25 ;
 var intervalSec = 100/interval ;
 var down = 0;
-var pressed = [] ;
+var pressed = ["test"] ;
 var count = 0 ; // count seconds
 var timer ;
 
@@ -42,18 +42,40 @@ function onTimerTick(sound) {
 	}
 	else if(count == sumCount){
 		peekTimer.Stop();
-		clearInterval(onTimerTick)
+		clearInterval(timer) ;
 	}
 	else{
 		if (down==1){
-			pressed.push(1);
+			pressed.push("1");
 		}
 		else{
-			pressed.push(0);
+			pressed.push("0");
 		}
 	}
+
+
     count += 1 ;
 }
+
+
+document.onkeydown = function(evt) {
+    evt = evt || window.event;//ESC button
+    if (evt.keyCode == 27) {
+       	clearInterval(timer) ;
+	showHide("examine", "hear")
+	iDiv.className = 'block';
+	var innerDiv = document.createElement('div');
+	innerDiv.className = 'block-2';
+	iDiv.appendChild(innerDiv);
+	document.getElementsByTagName('body')[0].appendChild(iDiv);
+
+	document.write('<div id="examine">Beepograph<br><button id="but" class="complete" type="button">start the examination</button></div>');
+	document.getElementById("but").onclick=examine();
+	document.write(pressed);
+
+	
+    }
+};
 
 function examine(){
 	//for (var sound in sounds) { 
@@ -66,8 +88,7 @@ function examine(){
 
 
 function mouseDown(){
-down = 1 ;
-alert(down);
+	down = 1 ;
 }
 
 function mouseUp(){
@@ -82,9 +103,11 @@ h1 {
 }
 </style>
 </head>
+<body>
 <div id="examine">
 Beepograph<br>
 <button class="complete" onclick="examine()" type="button">start the examination</button>
 </div>
 <button id="hear" class="complete" onmousedown="mouseDown()" onmouseup="mouseUp() type="button" style="display:none;width:100%;height:100%;background-color:#ff8800;font-size:10vw;">BEEP</button>
+</body>
 
